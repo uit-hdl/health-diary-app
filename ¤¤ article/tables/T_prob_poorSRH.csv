@@ -1,0 +1,6 @@
+Row,P(SHR<=2),ci lower,ci upper,count,(%)
+0 bad LS-factors,14.5,13.4,15.5,4249,20.15
+1 bad LS-factors,26.1,25.2,27,9642,45.73
+2 bad LS-factors,44,42.5,45.5,4254,20.18
+3 bad LS-factors,57.9,55.3,60.6,1331,6.31
+Atleast 4 bad LS-factors,79.6,75.1,84,318,1.51
