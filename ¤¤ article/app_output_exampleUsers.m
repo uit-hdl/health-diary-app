@@ -43,11 +43,13 @@ T_oldMan = table(t, id, srh, age, sex, weight, height, education, ...
 
 T_user = map_userdata_to_model_input(T_oldMan) %#ok<*NASGU> 
 
+close all
+subplot(211)
 lme.predict()
 main_plotSuggestedChanges(T_oldMan, lme)
+title("68 year old mostly sedentary man with Diabetes")
+% Create data for middleaged woman with psychological distress
 
-%% Create data for middleaged woman with psychological distress
-id = 0; srh = 3; t = 7;
 % ¤¤¤ General Info ¤¤¤
 age = 32 / 10;
 sex = categorical(0);
@@ -84,21 +86,11 @@ T_worriedWoman = table(t, id, srh, age, sex, weight, height, education, ...
     tense, dizzy, worried, fear, insomnia);
 lm_input_table = map_userdata_to_model_input(T_worriedWoman);
 
-lme = load_model()
 T_user = T_worriedWoman
 
+subplot(212)
 main_plotSuggestedChanges(T_worriedWoman, lme)
-%%
+title("32 year old overweight woman with mental health symtpoms")
+%% save
+saveas(gcf, "figures/app_user_2_examples.png")
 
-% Save user to file
-user_folder = "C:\Users\perwa\OneDrive - UiT Office 365\Health companion app\saved matlab files\user-tables";
-user_file = fullfile(user_folder, "T_user.mat");
-save(user_file, 'T')
-
-% load model:
-model_folder = "C:\Users\perwa\OneDrive - UiT Office 365\Health companion app\saved matlab files\models";
-model_file = fullfile(model_folder, "model_jan_17.mat");
-load(model_file, 'lme');
-
-close all
-main_plotSuggestedChanges(T, lme)

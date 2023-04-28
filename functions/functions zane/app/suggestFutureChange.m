@@ -134,18 +134,18 @@ end
 % ¤¤¤ Mental Illness ¤¤¤
 if T_user.hscl > 1
     suggested_changes.hscl.newLvl{1} = max(T_user.hscl-1, 1);
-    suggested_changes.hscl.changeText{1} = sprintf('Improve mental health by one level on HSCL-scale');
+    suggested_changes.hscl.changeText{1} = sprintf('Improve mental health by one level on a scale from 1 to 4');
 
     if suggested_changes.hscl.newLvl{1} > 1
         suggested_changes.hscl.newLvl{2} = 1;
-        suggested_changes.hscl.changeText{2} = sprintf('Reach optimal mental health level on HSCL-scale');
+        suggested_changes.hscl.changeText{2} = sprintf('Resolve issues causing your psychological distress');
     end
 end
 
 % ¤¤¤ Support Friends ¤¤¤
 if T_user.friendsSupp == "0"
     suggested_changes.friendsSupp.newLvl{1} = "1";
-    suggested_changes.friendsSupp.changeText{1} = sprintf('Having mutually supportive friendships');
+    suggested_changes.friendsSupp.changeText{1} = sprintf('Have mutually supportive friendships');
 end
 
 % *** Convert strings to type categorical ***
@@ -167,21 +167,21 @@ end
 % ¤¤¤ Local Functions ¤¤¤
 function Text = suggestedLvl2text(Lvl)
 if Lvl == "f2i1"
-    Text = sprintf('Mild intensity exercise (e.g. brisk walk)\n once per week');
+    Text = sprintf('Mild exercise (e.g. brisk walk) once per week');
 elseif Lvl == "f2i2"
-    Text = sprintf('Moderate intensity exercise (you become sweaty)\n nonce per week');
+    Text = sprintf('Moderate exercise (you become sweaty) once per week');
 elseif Lvl == "f2i3"
-    Text = sprintf('High intensity exercise (you become exhausted)\n once per week');
+    Text = sprintf('Hard exercise (you become exhausted) once per week');
 elseif Lvl == "f3i1"
-    Text = sprintf('Mild intensity exercise (e.g. brisk walk)\n 1-3 times per week');
+    Text = sprintf('Mild exercise (e.g. brisk walk) 1-3 times per week');
 elseif Lvl == "f3i2"
-    Text = sprintf('Moderate intensity exercise (you become sweaty)\n 1-3 times per week');
+    Text = sprintf('Moderate exercise (you become sweaty) 1-3 times per week');
 elseif Lvl == "f3i3"
-    Text = sprintf('High intensity exercise (you become exhausted)\n 1-3 times per week');
+    Text = sprintf('Hard exercise (you become exhausted) 1-3 times per week');
 elseif Lvl == "f4i2"
-    Text = sprintf('Moderate intensity exercise (you become exhausted)\n at least 4 times per week');
+    Text = sprintf('Moderate exercise (you become exhausted) $>$3 times per week');
 elseif Lvl == "f4i3"
-    Text = sprintf('High intensity exercise (you become exhausted)\n at least 4 times per week');
+    Text = sprintf('Hard exercise (you become exhausted) $>$3 times per week');
 end
 
 end

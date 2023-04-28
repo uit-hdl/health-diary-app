@@ -18,8 +18,9 @@ sprintf("Current srh: %g", current_srh)
 names_lifestyle_factors = fieldnames(S);
 n_decision_vars = numel(names_lifestyle_factors);
 potSRHarray = current_srh;
-textArray = {'Average SRH for people in your current category'};
+textArray = {'Predicted health for people matching your current status'};
 clusters = {'Current'};
+set(groot, 'defaultAxesTickLabelInterpreter', 'latex')
 
 for i = 1:n_decision_vars
     lifestyle_factor = names_lifestyle_factors{i};
@@ -51,19 +52,19 @@ textArray = NewOrder.textArray;
 
 
 % ¤¤¤ Plot Suggested Changes ¤¤¤
-close all
-figure
 barText = categorical(textArray);
 barText = reordercats(barText, textArray);
-barh(barText, potSRHarray, "BarWidth", 0.05, "FaceColor", ...
+barh(barText, potSRHarray, "BarWidth", 0.08, "FaceColor", ...
     color2triplet("grey"), "EdgeColor", "none")
+ax = gca;
+ax.FontSize = 12;
 
 % Determine x-axis limits:
 s = sort(potSRHarray);
 xlim([floor(s(1)), ceil(s(end))])
 xticks([1, 2, 3, 4])
 xticklabels({'Very bad', 'Bad', 'Good', 'Very Good'})
-title 'Estimated effect of reaching various health goals'
+title('Estimated effect of reaching various health goals', "Interpreter", "latex")
 
 hold on
 Nbars = numel(potSRHarray);
